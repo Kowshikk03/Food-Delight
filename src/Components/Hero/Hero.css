@@ -4,7 +4,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url("/src/assets/images/hero-1.png") no-repeat center center/cover;
+  background: url("/src/assets/Images/hero-1.png") no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: flex-start;
