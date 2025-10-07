@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaPlus, FaSearch, FaChevronDown } from "react-icons/fa";
 import "./More-Foods.css";
-import Food_1 from "../../../assets/images/food-1.webp";
-import Food_2 from "../../../assets/images/food-2.png";
-import Food_3 from "../../../assets/images/food-3.png";
-import Food_4 from "../../../assets/images/food-4.png";
-import Food_5 from "../../../assets/images/food-5.webp";
-import Food_6 from "../../../assets/images/food-6.jpeg";
+import Food_1 from "../../../assets/Images/food-1.webp";
+import Food_2 from "../../../assets/Images/food-2.png";
+import Food_3 from "../../../assets/Images/food-3.png";
+import Food_4 from "../../../assets/Images/food-4.png";
+import Food_5 from "../../../assets/Images/food-5.webp";
+import Food_6 from "../../../assets/Images/food-6.jpeg";
 import Food_7 from "../../../assets/Images/food-7.webp";
 import Food_8 from "../../../assets/Images/food-8.webp";
 import Food_9 from "../../../assets/Images/food-9.jpg";

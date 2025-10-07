@@ -2,10 +2,10 @@ import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./Foods.css";
-import Food_1 from "../../assets/images/food-1.webp";
-import Food_2 from "../../assets/images/food-2.png";
-import Food_3 from "../../assets/images/food-3.png";
-import Food_4 from "../../assets/images/food-4.png";
+import Food_1 from "../../assets/Images/food-1.webp";
+import Food_2 from "../../assets/Images/food-2.png";
+import Food_3 from "../../assets/Images/food-3.png";
+import Food_4 from "../../assets/Images/food-4.png";
 
 const foodsData = [
   {
