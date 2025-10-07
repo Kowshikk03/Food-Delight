@@ -1,0 +1,151 @@
+.reviews-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 100px; 
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.review-form {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+}
+
+.form-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.review-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.review-form input,
+.review-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 20px; 
+}
+
+.review-form textarea {
+  resize: none;
+  min-height: 80px;
+}
+
+.stars {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.star {
+  font-size: 28px;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.star:hover,
+.star.filled:hover {
+  color: gold;
+  transform: scale(1.2);
+}
+
+.star.filled {
+  color: gold;
+}
+
+.review-form button {
+  margin-top: 10px;
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.review-form button:hover {
+  background: #eb6772;
+}
+
+.reviews-list h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.review-card {
+  background: #fff;
+  padding: 15px 20px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.review-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-icon {
+  font-size: 28px;
+  color: #e63946;
+}
+
+.review-name {
+  font-weight: bold;
+}
+
+.review-date {
+  font-size: 12px;
+  color: #777;
+}
+
+.review-stars {
+  color: gold;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.review-form input:focus,
+.review-form textarea:focus {
+  outline: none;                 
+  border: 2px solid #e63946;     
+  box-shadow: 0 0 5px rgba(230, 57, 70, 0.5); 
+  transition: border 0.3s, box-shadow 0.3s;
+}

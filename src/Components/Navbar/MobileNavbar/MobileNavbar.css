@@ -1,0 +1,96 @@
+.mobile-menu {
+  width: 100vw;
+  height: 100vh;
+  display: none; /* hidden by default */
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999; /* on top */
+  opacity: 0;
+  transform: translateX(-100vw);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu.active {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mobile-menu-container {
+  width: 70vw;
+  height: 100vh;
+  background-color: #342864;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mobile-logo {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-logo-icon {
+  color: #a993fe;
+}
+
+.mobile-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+}
+
+.menu-item:hover {
+  color: #a993fe;
+}
+
+.logout-btn {
+  color: #ff6961;
+}
+
+.login-btn {
+  color: #a993fe;
+}
+
+.cart-count {
+  background-color: red;
+  color: white;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Hamburger visibility for mobile */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  color: white;
+}
+
+@media (max-width: 769px) {
+  .hamburger {
+    display: block;
+  }
+}

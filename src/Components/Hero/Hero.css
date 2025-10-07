@@ -1,0 +1,170 @@
+* { box-sizing: border-box; }
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url("/src/assets/images/hero-1.png") no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.hero-overlay {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.95) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0;
+}
+
+.hero-text {
+  margin-top: 7rem;
+  padding-left: 2%;        
+  margin-left: 0;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  justify-content: center;
+  gap: 1.5rem; 
+}
+
+.hero-text h1,
+.hero-text h1 span,
+.hero-text p {
+  margin: 0 !important;
+  padding: 0 !important;
+  text-indent: 0 !important;
+}
+
+.hero-text h1 {
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: #222;
+  line-height: 1.08;     
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 0.5rem; 
+}
+
+.hero-text h1 span {
+  display: block;
+  color: #e63946;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.hero-text p {
+  font-size: 1.3rem;
+  color: #555;
+  line-height: 1.4;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 1rem; 
+}
+
+.hero-btn {
+  background: #e63946;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  align-self: flex-start; 
+}
+
+.hero-btn:hover {
+  background: #f06363;
+}
+
+
+/* Tablet devices (portrait & landscape) */
+@media (max-width: 900px) and (min-width: 601px) {
+  .hero {
+    height: 80vh;
+    background-size: cover;
+    justify-content: center;
+  }
+
+  .hero-overlay {
+    justify-content: center;
+    padding: 0 20px;
+  }
+
+  .hero-text {
+    padding-left: 0;
+    text-align: center;
+    align-items: center;
+    gap: 1rem;
+    max-width: 90%;
+  }
+
+  .hero-text h1 {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-text h1 span {
+    font-size: 2.4rem;
+  }
+
+  .hero-text p {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile devices (small screens) */
+@media (max-width: 600px) {
+  .hero {
+    height: 70vh;
+    background-position: center;
+  }
+
+  .hero-overlay {
+    justify-content: center;
+    padding: 0 15px;
+  }
+
+  .hero-text {
+    max-width: 100%;
+    padding: 0;
+    text-align: center;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-text h1 span {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-btn {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+}
