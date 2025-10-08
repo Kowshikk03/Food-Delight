@@ -19,11 +19,13 @@ const Navbar = ({ cartCount, user, setUser }) => {
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
 
+  // Show notification
   const showNotification = (message, type) => {
     setNotification({ message, type });
     setTimeout(() => setNotification({ message: "", type: "" }), 3000);
   };
 
+  // Logout
   const handleLogout = () => {
     setUser(null);
     setShowDropdown(false);
@@ -34,6 +36,7 @@ const Navbar = ({ cartCount, user, setUser }) => {
     }, 1500);
   };
 
+  // Cart click
   const handleCartClick = (e) => {
     e.preventDefault();
     if (user) navigate("/cart");
@@ -43,6 +46,7 @@ const Navbar = ({ cartCount, user, setUser }) => {
     }
   };
 
+  // Close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -52,6 +56,18 @@ const Navbar = ({ cartCount, user, setUser }) => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [menuOpen]);
 
   return (
     <>
@@ -141,7 +157,7 @@ const Navbar = ({ cartCount, user, setUser }) => {
               </Link>
             )}
 
-            {/* 🍔 Hamburger icon (moved after login/profile) */}
+            {/* Hamburger */}
             <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
               {menuOpen ? <FaTimes /> : <FaBars />}
             </div>

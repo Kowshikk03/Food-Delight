@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ref, set, get, child } from "firebase/database";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { ref, set, get } from "firebase/database";
 import { database } from "../../firebase"; // make sure path is correct
 import "./Auth.css";
 
@@ -12,61 +13,67 @@ const Auth = ({ setUser }) => {
   const [notification, setNotification] = useState({ message: "", type: "" });
   const navigate = useNavigate();
 
+  const auth = getAuth();
+
   const showNotification = (message, type) => {
     setNotification({ message, type });
     const duration = type === "success" && isLogin ? 1500 : 3000;
     setTimeout(() => setNotification({ message: "", type: "" }), duration);
   };
 
+  // Signup
   const handleSignup = async () => {
     if (!name || !email || !password) {
       showNotification("Please fill all fields ❗", "error");
       return;
     }
 
-    const userData = { name, email, password };
-
     try {
-      await set(ref(database, `users/${email.replace(".", "_")}`), userData);
+      // Create user in Firebase Auth
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Save extra info in Realtime DB
+      await set(ref(database, `users/${user.uid}`), {
+        name,
+        email,
+      });
+
       showNotification("Signup successful! 🎉 You can now login.", "success");
 
       setIsLogin(true);
+      setName("");
       setEmail("");
       setPassword("");
-      setName("");
     } catch (error) {
       console.error(error);
-      showNotification("Signup failed! ⚠️", "error");
+      showNotification(error.message || "Signup failed! ⚠️", "error");
     }
   };
 
+  // Login
   const handleLogin = async () => {
+    if (!email || !password) {
+      showNotification("Please enter email and password ❗", "error");
+      return;
+    }
+
     try {
-      const dbRef = ref(database);
-      const snapshot = await get(child(dbRef, `users/${email.replace(".", "_")}`));
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-      if (!snapshot.exists()) {
-        showNotification("No user found! Please sign up first. ⚠️", "error");
-        return;
-      }
+      // Fetch user's extra info (name) from Realtime DB
+      const snapshot = await get(ref(database, `users/${user.uid}`));
+      const userData = snapshot.exists() ? snapshot.val() : { name: "", email: user.email };
 
-      const storedUser = snapshot.val();
+      // Set full user info in React state
+      setUser({ uid: user.uid, email: user.email, name: userData.name });
 
-      if (password === storedUser.password) {
-        showNotification(`Welcome back, ${storedUser.name}! 💖`, "success");
-
-        setUser(storedUser);
-
-        // store current logged-in user for App.jsx to fetch
-        await set(ref(database, "currentUser"), storedUser);
-
-        setTimeout(() => navigate("/#hero"), 1500);
-      } else {
-        showNotification("Invalid email or password ❌", "error");
-      }
+      showNotification(`Welcome back, ${userData.name || "User"}! 💖`, "success");
+      setTimeout(() => navigate("/#hero"), 1500);
     } catch (error) {
       console.error(error);
-      showNotification("Login failed! ⚠️", "error");
+      showNotification("Invalid email or password ❌", "error");
     }
   };
 
@@ -79,6 +86,7 @@ const Auth = ({ setUser }) => {
         </div>
 
         <div className="form-slider">
+          {/* Login Form */}
           <div className="login-form">
             <h2>Login</h2>
             <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -86,6 +94,7 @@ const Auth = ({ setUser }) => {
             <button onClick={handleLogin}>Login</button>
           </div>
 
+          {/* Signup Form */}
           <div className="signup-form">
             <h2>Sign Up</h2>
             <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
@@ -96,6 +105,7 @@ const Auth = ({ setUser }) => {
         </div>
       </div>
 
+      {/* Notification */}
       {notification.message && (
         <div className={`notification-popup ${notification.type}`}>
           <p>{notification.message}</p>

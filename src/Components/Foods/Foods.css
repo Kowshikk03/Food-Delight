@@ -141,12 +141,118 @@
   background: #eb6772;
 }
 
-/* 🌟 Base styles already exist, we add more responsive tweaks below */
+/* 📱 Mobile (up to 480px) - Smaller cards */
+@media (max-width: 480px) {
+  .foods-container {
+    width: 95%;
+    margin: 70px auto 15px;
+  }
 
-/* Large desktops (1200px+) - keep as is */
-@media (min-width: 1200px) {
+  .foods-container h2 {
+    font-size: 1.6rem;
+    margin-top: 90px;
+  }
+
+  .foods-container p {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
+
   .foods-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr; /* 1 card per row */
+    gap: 12px;
+  }
+
+  .food-card {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  .food-card img {
+    height: 140px; /* smaller image */
+  }
+
+  .food-card h3 {
+    font-size: 0.95rem;
+    margin: 5px 0;
+  }
+
+  .food-card p {
+    font-size: 0.8rem;
+    margin: 3px 0;
+  }
+
+  .food-card .price {
+    font-size: 0.95rem;
+  }
+
+  .food-card button {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .food-card-content {
+    padding: 10px;
+    justify-content: flex-start;  /* stack content without extra space */
+    gap: 5px;  /* small spacing between elements */
+  }
+
+  .full-menu-btn {
+    padding: 7px 12px;
+    font-size: 0.85rem;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+}
+
+/* Small Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .foods-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .food-card img {
+    height: 160px;
+  }
+
+  .food-card h3 {
+    font-size: 1rem;
+  }
+
+  .food-card p {
+    font-size: 0.85rem;
+  }
+
+  .food-card .price {
+    font-size: 1rem;
+  }
+}
+
+/* 🖥 Tablets and Small Desktops (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .foods-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .food-card img {
+    height: 220px;
+  }
+
+  .foods-container h2 {
+    font-size: 2.2rem;
+    margin-top: 130px;
+  }
+}
+
+/* 💻 Desktop (1025px and above) */
+@media (min-width: 1025px) {
+  .foods-grid {
+    grid-template-columns: repeat(3, 1fr); /* default 3 cards per row */
     gap: 25px;
   }
 
@@ -156,143 +262,5 @@
 
   .foods-container h2 {
     font-size: 2.5rem;
-  }
-
-  .foods-container p {
-    font-size: 1.1rem;
-  }
-}
-
-/* Medium desktops / large tablets (992px - 1199px) */
-@media (max-width: 1199px) and (min-width: 992px) {
-  .foods-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-
-  .food-card img {
-    height: 220px;
-  }
-
-  .foods-container h2 {
-    font-size: 2.3rem;
-  }
-
-  .foods-container p {
-    font-size: 1rem;
-  }
-}
-
-/* Tablets (768px - 991px) */
-@media (max-width: 991px) and (min-width: 768px) {
-  .foods-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  .food-card img {
-    height: 200px;
-  }
-
-  .foods-container h2 {
-    font-size: 2rem;
-  }
-
-  .foods-container p {
-    font-size: 0.95rem;
-  }
-}
-
-/* Small tablets / large mobiles (600px - 767px) */
-@media (max-width: 767px) and (min-width: 601px) {
-  .foods-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .food-card img {
-    height: 180px;
-  }
-
-  .foods-container h2 {
-    font-size: 1.8rem;
-  }
-
-  .foods-container p {
-    font-size: 0.9rem;
-  }
-
-  .food-card button,
-  .full-menu-btn {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
-}
-
-/* Small mobiles (up to 600px) */
-@media (max-width: 600px) {
-  .foods-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .food-card {
-    max-width: 90%;
-    padding: 10px;          /* reduce padding to make card shorter */
-  }
-
-  .food-card img {
-    width: 100%;
-    height: 120px;           /* smaller image height */
-    object-fit: cover;       /* fill card without distortion */
-    border-radius: 10px 10px 0 0;
-  }
-
-  .food-card-content {
-    padding: 8px 10px;       /* smaller padding inside content */
-  }
-
-  .foods-container h2 {
-    font-size: 1.6rem;
-  }
-
-  .foods-container p {
-    font-size: 0.85rem;
-  }
-
-  .food-card button,
-  .full-menu-btn {
-    font-size: 0.85rem;
-    padding: 7px 14px;
-  }
-}
-
-/* Extra small mobiles (up to 400px) */
-@media (max-width: 400px) {
-  .foods-container {
-    width: 95%;
-  }
-
-  .food-card img {
-    height: 100px;           /* even smaller for tiny screens */
-    object-fit: cover;
-  }
-
-  .food-card-content {
-    padding: 6px 8px;
-  }
-
-  .foods-container h2 {
-    font-size: 1.4rem;
-  }
-
-  .foods-container p {
-    font-size: 0.8rem;
-  }
-
-  .food-card button,
-  .full-menu-btn {
-    font-size: 0.8rem;
-    padding: 6px 12px;
   }
 }

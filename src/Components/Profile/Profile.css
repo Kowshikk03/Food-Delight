@@ -1,12 +1,12 @@
 /* Page container */
 .user-profile-page {
-  min-height: calc(100vh - 80px); /* leaves space for navbar */
+  min-height: calc(100vh - 80px);
   background: #f4f6f9;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px 20px 40px; /* top padding keeps distance from navbar */
+  padding: 80px 20px 40px;
 }
 
 /* Header section */
@@ -27,7 +27,7 @@
   margin-top: 8px;
 }
 
-/* Single profile card */
+/* Profile card */
 .user-profile-card {
   background: #fff;
   padding: 40px 50px;
@@ -39,11 +39,22 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
+/* User icon */
 .user-profile-icon {
   font-size: 80px;
   color: #ff3538;
   margin-bottom: 15px;
+}
+
+/* User info */
+.user-profile-name input,
+.user-profile-email input {
+  width: 90%;
+  padding: 8px 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
 
 .user-profile-name {
@@ -57,6 +68,28 @@
   font-size: 16px;
   color: #777;
   margin-bottom: 25px;
+}
+
+/* Buttons */
+.profile-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.user-edit-btn {
+  padding: 10px 25px;
+  font-size: 16px;
+  background: #ff4d4f;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.user-edit-btn:hover {
+  background: #eb6772;
 }
 
 .user-logout-btn {
@@ -74,8 +107,42 @@
   background: #eb6772;
 }
 
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #2ecc71;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-weight: bold;
+  z-index: 1000;
+  animation: fadeInOut 3s forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+
+/* Responsive */
 @media (max-width: 480px) {
   .user-profile-card {
     padding: 30px 25px;
+  }
+
+  .user-profile-name,
+  .user-profile-email input {
+    font-size: 18px;
+  }
+
+  .user-edit-btn,
+  .user-logout-btn {
+    padding: 8px 20px;
+    font-size: 14px;
   }
 }

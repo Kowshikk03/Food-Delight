@@ -87,84 +87,86 @@
   background: #f06363;
 }
 
+/* 🌍 Responsive Design */
 
-/* Tablet devices (portrait & landscape) */
-@media (max-width: 900px) and (min-width: 601px) {
+/* 📱 Mobile Devices (up to 600px) */
+@media (max-width: 600px) {
   .hero {
-    height: 80vh;
-    background-size: cover;
+    height: 100vh; 
+    background: url("/src/assets/Images/hero-1.png") no-repeat center center/cover;
     justify-content: center;
+    align-items: center;
   }
 
   .hero-overlay {
+    padding: 0 1rem;
     justify-content: center;
-    padding: 0 20px;
+    align-items: center;
+    text-align: center;
   }
 
   .hero-text {
+    margin-top: 0;
     padding-left: 0;
-    text-align: center;
     align-items: center;
+    text-align: center;
     gap: 1rem;
-    max-width: 90%;
   }
 
   .hero-text h1 {
-    font-size: 2.4rem;
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    line-height: 1.2;
   }
 
-  .hero-text h1 span {
-    font-size: 2.4rem;
+  .hero-text p {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-right: 8rem;
+  }
+
+  .hero-btn {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    margin-right: 12rem;
+  }
+}
+
+/* 💻 Tablets (601px to 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .hero {
+    height: 100vh;
+    background-position: center center;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.9) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  .hero-text h1 {
+    font-size: 2.8rem;
   }
 
   .hero-text p {
     font-size: 1.1rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .hero-btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
   }
 }
 
-/* Mobile devices (small screens) */
-@media (max-width: 600px) {
+/* 🖥️ Large Screens (1025px and above) */
+@media (min-width: 1025px) {
   .hero {
-    height: 70vh;
+    height: 100vh;
     background-position: center;
   }
 
-  .hero-overlay {
-    justify-content: center;
-    padding: 0 15px;
-  }
-
-  .hero-text {
-    max-width: 100%;
-    padding: 0;
-    text-align: center;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
   .hero-text h1 {
-    font-size: 1.8rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .hero-text h1 span {
-    font-size: 1.8rem;
+    font-size: 3.6rem;
   }
 
   .hero-text p {
-    font-size: 0.95rem;
-    margin-bottom: 0.6rem;
-  }
-
-  .hero-btn {
-    padding: 8px 18px;
-    font-size: 0.85rem;
+    font-size: 1.3rem;
   }
 }

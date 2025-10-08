@@ -107,11 +107,80 @@
 @media (max-width: 768px) {
   .footer-top {
     flex-direction: column;
-    gap: 20px;
+    gap: 1px;
+    align-content: center;
   }
 
   .footer-links {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: -120px; /* 💫 Move links section upward */
+  }
+}
+
+
+@media (max-width: 480px) {
+  .footer-top {
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* centers both rows */
+    align-items: center;
+    margin-top: -140px;
+    margin-bottom: -10px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  /* Quick Links & Support side by side and centered */
+  .link-column:nth-child(1),
+  .link-column:nth-child(2) {
+    width: 40%;
+    text-align: center;
+  }
+
+  /* Follow Us centered below */
+  .link-column:nth-child(3) {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .link-column h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  .link-column ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .link-column ul li {
+    margin: 2px 0;
+  }
+
+  .link-column ul li a {
+    font-size: 1rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: -20px;
+  }
+
+  .social-icons {
+    font-size: 0.9rem;
+    justify-content: center;
+    margin-top: 5px;
+    gap: 6px;
   }
 }

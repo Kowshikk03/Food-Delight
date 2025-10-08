@@ -1,8 +1,10 @@
+// App.jsx
 import "./App.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth, database } from "./firebase";
+import { ref, get } from "firebase/database";
 
 import Navbar from "./Components/Navbar/Navbar";
 import Hero from "./Components/Hero/Hero";
@@ -24,14 +26,27 @@ function App() {
 
   // Listen for auth state changes
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser); // null if not logged in
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        try {
+          // Fetch user's extra info (name) from Realtime DB
+          const snapshot = await get(ref(database, `users/${currentUser.uid}`));
+          const userData = snapshot.exists() ? snapshot.val() : { name: "", email: currentUser.email };
+          setUser({ uid: currentUser.uid, email: currentUser.email, name: userData.name });
+        } catch (error) {
+          console.error("Failed to fetch user data:", error);
+          setUser({ uid: currentUser.uid, email: currentUser.email, name: "" });
+        }
+      } else {
+        setUser(null);
+      }
       setLoading(false);
     });
 
-    return () => unsubscribe(); // cleanup
+    return () => unsubscribe();
   }, []);
 
+  // Cart functions
   const addToCart = (food) => {
     setCartItems((prev) => {
       const existingItem = prev.find((item) => item.name === food.name);
@@ -73,6 +88,7 @@ function App() {
 
   const clearCart = () => setCartItems([]);
 
+  // Logout function
   const handleLogout = async () => {
     await signOut(auth);
     setUser(null);
